@@ -1,0 +1,8 @@
+<h1>here's all of your posts</h1>
+
+
+<% if user_signed_in? %>
+    <%= button_to "sign out", users_sign_out_path, method: :delete, data:{ turbo_method: :delete } %>
+<% else %>
+    <%= button_to  "sign in", new_user_session_path %>
+<% end %>
