@@ -1,8 +1,23 @@
 <h1>here's all of your posts</h1>
 
-
+<%= button_to  "make a new post", new_post_path, method: :get %>    
+<br>
 <% if user_signed_in? %>
     <%= button_to "sign out", users_sign_out_path, method: :delete, data:{ turbo_method: :delete } %>
 <% else %>
     <%= button_to  "sign in", new_user_session_path %>
 <% end %>
+
+<ul>
+    <hr>
+    <% @posts.each do |post| %>
+    <% if user_signed_in? %>
+      <li>author's name: <%= post.user.username%></li>
+    <% end %>
+    <li>  <h2> <em>title :</em>  <%= post.title%></h2></li>
+    <li>  <p> <em>content:</em> <%= post.content%></p></li>
+    <hr>
+    <% end %>
+</ul>
+
+
